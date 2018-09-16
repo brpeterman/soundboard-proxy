@@ -4,7 +4,9 @@
   "description": "Proxy for Lab 2635 soundboard",
   "main": "index.js",
   "scripts": {
-    "test": "(cd test && node test-command.js)",
+    "test": "(cd test && npm run test-command && npm run test-list)",
+    "test-command": "(cd test && node test-command.js)",
+    "test-list": "(cd test && node test-list.js)",
     "package": "zip -r build/soundboard-proxy.zip node_modules/* src/* config/* package.json index.js"
   },
   "repository": {

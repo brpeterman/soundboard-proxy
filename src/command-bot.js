@@ -2,18 +2,18 @@ const Discord = require('discord.js');
 
 class CommandBot {
     constructor(configuration, command) {
-        this.token = configuration.token;
-        this.guild = configuration.guild;
-        this.channel = configuration.channel;
-        this.soundboardUser = configuration.soundboardUser;
+        this._token = configuration.token;
+        this._guild = configuration.guild;
+        this._channel = configuration.channel;
+        this._soundboardUser = configuration.soundboardUser;
         this._initializeClient(command);
     }
 
     _initializeClient(command) {
-        this.client = new Discord.Client();
-        this.client.on('ready', () => {
-            this.client.channels.get(this.channel).send(this._command(command));
-            this.client.destroy();
+        this._client = new Discord.Client();
+        this._client.on('ready', () => {
+            this._client.channels.get(this._channel).send(this._command(command));
+            this._client.destroy();
         });
     }
 
@@ -22,11 +22,11 @@ class CommandBot {
     }
 
     _getSoundboardUser() {
-        return this.client.guilds.get(this.guild).members.get(this.soundboardUser);
+        return this._client.guilds.get(this._guild).members.get(this._soundboardUser);
     }
 
     connect() {
-        this.client.login(this.token);
+        this._client.login(this._token);
     }
 }
 
